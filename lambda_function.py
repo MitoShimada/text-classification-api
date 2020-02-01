@@ -41,7 +41,8 @@ def lambda_handler(event, context):
         Item={
             'id': unique_id,
             'result': result["result"],
-            'data': result["data"][0]
+            'data': [decimal.Decimal(i) for i in result["data"][0]][0],
+            'message': message
         }
     )
     response = {
